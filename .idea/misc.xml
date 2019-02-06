@@ -3,4 +3,32 @@
   <component name="ProjectRootManager" version="2" languageLevel="JDK_10" default="true" project-jdk-name="10" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
+  <component name="flamegraph-profiler">
+    <option name="includingMethodConfigs">
+      <list>
+        <MethodConfig>
+          <option name="classPatternString" value="src.QuickSort" />
+          <option name="methodPatternString" value="*" />
+          <option name="parameters">
+            <list>
+              <Parameter>
+                <option name="type" value="*" />
+              </Parameter>
+            </list>
+          </option>
+        </MethodConfig>
+        <MethodConfig>
+          <option name="classPatternString" value="test.QuickSort" />
+          <option name="methodPatternString" value="*" />
+          <option name="parameters">
+            <list>
+              <Parameter>
+                <option name="type" value="*" />
+              </Parameter>
+            </list>
+          </option>
+        </MethodConfig>
+      </list>
+    </option>
+  </component>
 </project>
