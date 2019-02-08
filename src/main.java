@@ -1,7 +1,7 @@
 import java.util.Random;
 
 public class main{
-    static final int NUMBER_OF_ITEMS = 3000;
+    static final int NUMBER_OF_ITEMS = 30000;
 
     public static void main (String[] args){
         RadixSort radixSorter = new RadixSort();

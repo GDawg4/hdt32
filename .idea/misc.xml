@@ -7,7 +7,7 @@
     <option name="includingMethodConfigs">
       <list>
         <MethodConfig>
-          <option name="classPatternString" value="src.QuickSort" />
+          <option name="classPatternString" value="hdt3.src.QuickSort" />
           <option name="methodPatternString" value="*" />
           <option name="parameters">
             <list>
@@ -18,8 +18,8 @@
           </option>
         </MethodConfig>
         <MethodConfig>
-          <option name="classPatternString" value="test.QuickSort" />
-          <option name="methodPatternString" value="*" />
+          <option name="classPatternString" value="hdt3.src.main" />
+          <option name="methodPatternString" value="main" />
           <option name="parameters">
             <list>
               <Parameter>
