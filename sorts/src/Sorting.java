@@ -120,7 +120,6 @@ public class Sorting {
                 posicion--;
             }
         }
-        return;
     }
     /*
     Obtenido de

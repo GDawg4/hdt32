@@ -1,91 +1,59 @@
 import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.*;
+import java.util.stream.Stream;
 
 class GFG {
-    static int NUMBER_OF_ELEMENTS = 6000;
+    static int NUMBER_OF_ELEMENTS = 60;
 
 	public static void main (String[] args) {
-
-	    Sorting sorter = new Sorting();
-		Scanner teclado = new Scanner(System.in);
-		Comparable[] toBeSorted = new Comparable[NUMBER_OF_ELEMENTS];
-
-        for (int i = 0; i < NUMBER_OF_ELEMENTS; i++) {
+	    try {
+            Writer wr = new FileWriter("test.txt");
+            for (int i = 0; i < NUMBER_OF_ELEMENTS; i++) {
                 int test = new Random().nextInt(NUMBER_OF_ELEMENTS);
-                toBeSorted[i] = test;
+                wr.write(new Integer(test).toString() + " ");
+            }
+            wr.close();
+        }catch (IOException E){
+
+        }
+
+        try {
+            Writer wr = new FileWriter("test.txt");
+            for (int i = 0; i < NUMBER_OF_ELEMENTS; i++) {
+                int test = new Random().nextInt(NUMBER_OF_ELEMENTS);
+                wr.write(new Integer(test).toString() + " ");
+            }
+            wr.close();
+        }catch (IOException E){
+
+        }
+
+        StringBuilder contentBuilder = new StringBuilder();
+        try{
+            Stream<String> lines = Files.lines(
+                    Paths.get("test.txt"),
+                    StandardCharsets.UTF_8);
+            lines.forEach(s ->contentBuilder.append(s));
+        }catch (IOException exception){
+            System.out.println("Error");
+        }
+        String calculation = contentBuilder.toString();
+        String[] onlySymbols = calculation.split(" ");
+
+        Sorting sorter = new Sorting();
+        Comparable[] toBeSorted = new Comparable[NUMBER_OF_ELEMENTS];
+
+        for (int i = 0; i < NUMBER_OF_ELEMENTS; i++){
+            toBeSorted[i] = Integer.valueOf(onlySymbols[i]);
         }
 
         sorter.radixsort(toBeSorted, toBeSorted.length);
 
-        for (int i = 0; i < NUMBER_OF_ELEMENTS; i++) {
-            int test = new Random().nextInt(NUMBER_OF_ELEMENTS);
-            toBeSorted[i] = test;
+        for (Comparable i : toBeSorted){
+            System.out.println(i);
         }
-
-        sorter.gnomeSort(toBeSorted, toBeSorted.length);
-
-        for (int i = 0; i < NUMBER_OF_ELEMENTS; i++) {
-            int test = new Random().nextInt(NUMBER_OF_ELEMENTS);
-            toBeSorted[i] = test;
-        }
-
-        sorter.quickSort(toBeSorted, 0, toBeSorted.length-1);
-
-        for (int i = 0; i < NUMBER_OF_ELEMENTS; i++) {
-            int test = new Random().nextInt(NUMBER_OF_ELEMENTS);
-            toBeSorted[i] = test;
-        }
-
-        sorter.mergeSort(toBeSorted, 0, toBeSorted.length - 1);
-
-        for (int i = 0; i < NUMBER_OF_ELEMENTS; i++) {
-            int test = new Random().nextInt(NUMBER_OF_ELEMENTS);
-            toBeSorted[i] = test;
-        }
-
-        sorter.selectionSort(toBeSorted);
-
-
-        /*
-         while (n != 7) {
-                System.out.println("-------------------------------");
-                System.out.println("        MENU PRINCIPAL      ");
-                System.out.println("-------------------------------");
-        System.out.println("");
-        System.out.println("1. Gnome Sort");
-        System.out.println("2. Merge Sort");
-        System.out.println("3. Quick Sort");
-        System.out.println("4. Radix Sort");
-        System.out.println("5. Selection Sort");
-        System.out.println("6. Salir");
-        System.out.println("Ingrese su opcion: ");
-        n = teclado.nextInt();
-        if(n == 0) {
-            System.out.println("Ingresar un numero mayor a 0");
-        }
-        if(n == 1) {
-                            Sorting.GnomeSort();
-        }
-        if(n == 2) {
-                            Sorting.MergeSort();
-        }
-        if(n == 3) {
-                            Sorting.QuickSort();
-        }
-        if(n == 4) {
-                            Sorting.RadixSort();
-        }
-        if(n == 5) {
-                            Sorting.SelectionSort();
-        }
-        if(n == 6) {
-            System.out.println("Gracias por usar la aplicacion");
-        }
-        if(n >= 7) {
-            System.out.println("Ingresar un numero menor a 7");
-            n = 0;
-        }
-		}
-		*/
 	}
 }

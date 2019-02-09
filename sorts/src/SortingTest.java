@@ -5,6 +5,13 @@ import static junit.framework.Assert.*;
 public class SortingTest {
 
     @org.junit.Test
+    public void getMax() {
+        Sorting getMaxer = new Sorting();
+        Comparable testList[] = {1, 2, 3, 4, 5, 6};
+        assertEquals(6, getMaxer.getMax(testList, 6));
+    }
+
+    @org.junit.Test
     public void quickSort() {
         Sorting quickSorter = new Sorting();
         Comparable scrambled[] = {5, 2, 7, 1, 1,3};
