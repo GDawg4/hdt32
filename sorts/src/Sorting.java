@@ -1,5 +1,10 @@
-public class Sorting {
+import java.util.Arrays;
 
+public class Sorting {
+    /*
+    Obtenido de
+    https://www.geeksforgeeks.org/quick-sort/
+     */
     public void quickSort(Comparable arr[], int low, int high){
         if (low < high){
             //low < high
@@ -26,26 +31,34 @@ public class Sorting {
 
         return i+1;
     }
+    /*
+    Obtenido de
+    https://www.geeksforgeeks.org/selection-sort/
+     */
+    static void selectionSort(Comparable arr[]) {
+        int n = arr.length;
 
-    public static void selectionSort (Comparable[] list)
-    {
-        int min;
-        Comparable temp;
-
-        for (int index = 0; index < list.length-1; index++)
+        // One by one move boundary of unsorted subarray
+        for (int i = 0; i < n-1; i++)
         {
-            min = index;
-            for (int scan = index+1; scan < list.length; scan++)
-                if (list[scan].compareTo(list[min]) < 0)
-                    min = scan;
+            // Find the minimum element in unsorted array
+            int min_idx = i;
+            for (int j = i+1; j < n; j++)
+                if (arr[j].compareTo(arr[min_idx]) < 0)
+                    min_idx = j;
 
-            // Swap the values
-            temp = list[min];
-            list[min] = list[index];
-            list[index] = temp;
+            // Swap the found minimum element with the first
+            // element
+            Comparable temp = arr[min_idx];
+            arr[min_idx] = arr[i];
+            arr[i] = temp;
         }
     }
 
+    /*
+    Obtenido de
+    https://www.geeksforgeeks.org/merge-sort/
+     */
     public void mergeSort(Comparable[] listanum, int izq, int der){
         if (izq >= der) {
             return;
@@ -86,6 +99,10 @@ public class Sorting {
         return;
     }
 
+    /*
+    Obtenido de
+    https://www.geeksforgeeks.org/gnome-sort-a-stupid-one/
+     */
     public void gnomeSort(Comparable listanum[], int n){
         int posicion = 0;
 
@@ -104,5 +121,55 @@ public class Sorting {
             }
         }
         return;
+    }
+    /*
+    Obtenido de
+    https://www.geeksforgeeks.org/radix-sort/
+     */
+    void radixsort(Comparable arr[], int n) {
+        // Find the maximum number to know number of digits
+        Comparable m = getMax(arr, n);
+
+        // Do counting sort for every digit. Note that instead
+        // of passing digit number, exp is passed. exp is 10^i
+        // where i is current digit number
+        for (int exp = 1; (Integer) m / exp > 0; exp *= 10)
+            countSort(arr, n, exp);
+    }
+
+    Comparable getMax(Comparable arr[], int n) {
+        Comparable mx = arr[0];
+        for (int i = 1; i < n; i++)
+            if (arr[i].compareTo(mx)>0)
+                mx = arr[i];
+        return mx;
+    }
+
+    static void countSort(Comparable arr[], int n, int exp) {
+        Comparable output[] = new Comparable[n]; // output array
+        int i;
+        int count[] = new int[10];
+        Arrays.fill(count,0);
+
+        // Store count of occurrences in count[]
+        for (i = 0; i < n; i++)
+            count[ ((Integer) arr[i]/exp)%10 ]++;
+
+        // Change count[i] so that count[i] now contains
+        // actual position of this digit in output[]
+        for (i = 1; i < 10; i++)
+            count[i] += count[i - 1];
+
+        // Build the output array
+        for (i = n - 1; i >= 0; i--)
+        {
+            output[count[ ((Integer) arr[i]/exp)%10 ] - 1] = arr[i];
+            count[ ((Integer) arr[i]/exp)%10 ]--;
+        }
+
+        // Copy the output array to arr[], so that arr[] now
+        // contains sorted numbers according to curent digit
+        for (i = 0; i < n; i++)
+            arr[i] = output[i];
     }
 }

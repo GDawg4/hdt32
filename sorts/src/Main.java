@@ -2,14 +2,12 @@ import java.io.*;
 import java.util.*;
 
 class GFG {
-    static int NUMBER_OF_ELEMENTS = 100;
+    static int NUMBER_OF_ELEMENTS = 6000;
 
 	public static void main (String[] args) {
 
 	    Sorting sorter = new Sorting();
-
 		Scanner teclado = new Scanner(System.in);
-
 		Comparable[] toBeSorted = new Comparable[NUMBER_OF_ELEMENTS];
 
         for (int i = 0; i < NUMBER_OF_ELEMENTS; i++) {
@@ -17,11 +15,36 @@ class GFG {
                 toBeSorted[i] = test;
         }
 
+        sorter.radixsort(toBeSorted, toBeSorted.length);
+
+        for (int i = 0; i < NUMBER_OF_ELEMENTS; i++) {
+            int test = new Random().nextInt(NUMBER_OF_ELEMENTS);
+            toBeSorted[i] = test;
+        }
+
         sorter.gnomeSort(toBeSorted, toBeSorted.length);
 
-        for (Comparable i: toBeSorted){
-            System.out.println(i);
+        for (int i = 0; i < NUMBER_OF_ELEMENTS; i++) {
+            int test = new Random().nextInt(NUMBER_OF_ELEMENTS);
+            toBeSorted[i] = test;
         }
+
+        sorter.quickSort(toBeSorted, 0, toBeSorted.length-1);
+
+        for (int i = 0; i < NUMBER_OF_ELEMENTS; i++) {
+            int test = new Random().nextInt(NUMBER_OF_ELEMENTS);
+            toBeSorted[i] = test;
+        }
+
+        sorter.mergeSort(toBeSorted, 0, toBeSorted.length - 1);
+
+        for (int i = 0; i < NUMBER_OF_ELEMENTS; i++) {
+            int test = new Random().nextInt(NUMBER_OF_ELEMENTS);
+            toBeSorted[i] = test;
+        }
+
+        sorter.selectionSort(toBeSorted);
+
 
         /*
          while (n != 7) {
